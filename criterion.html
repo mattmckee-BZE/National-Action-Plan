@@ -1,121 +1,168 @@
-<script src="data.js"></script>
-<script>
-  const params = new URLSearchParams(location.search);
-  const id = params.get("id");
-  const city = params.get("city");
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Criterion – BZE CSC</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumbs" style="margin-bottom:10px;">
+      <a id="backLink" href="city.html">← Back</a>
+    </div>
 
-  const backLink = document.getElementById("backLink");
-  backLink.href = city ? `city.html?city=${encodeURIComponent(city)}` : "city.html";
+    <div id="content"></div>
+  </div>
 
-  const contentEl = document.getElementById("content");
+  <script src="data.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    const city = params.get("city"); // optional (from city.html)
 
-  if (!id) {
-    contentEl.innerHTML = "<div class='detailCard'>No criterion selected.</div>";
-  } else {
-    const found = findItemById(id);
+    // Back link: prefer returning to the city page if available
+    const backLink = document.getElementById("backLink");
+    backLink.href = city ? `city.html?city=${encodeURIComponent(city)}` : "city.html";
+    backLink.textContent = city ? "← Back to city" : "← Back";
 
-    if (!found) {
-      contentEl.innerHTML = "<div class='detailCard'>Criterion not found.</div>";
+    const content = document.getElementById("content");
+
+    if (!id) {
+      content.innerHTML = `<div class="detailCard">
+        <h2 class="detailTitle">No criterion selected</h2>
+        <div class="meta">Go back and click a criterion.</div>
+      </div>`;
     } else {
-      const { pillar, group, item } = found;
-      const c = item.content || {};
+      const found = findItemById(id);
 
-      function renderList(items, type="ul") {
-        if (!items) return "<p class='sectionHint'>Placeholder content.</p>";
-        const tag = type === "ol" ? "ol" : "ul";
-        return `<${tag} class='${type==="ol"?"numberedList":"bulletList"}'>
-          ${items.map(i => `<li>${i}</li>`).join("")}
-        </${tag}>`;
-      }
+      if (!found) {
+        content.innerHTML = `<div class="detailCard">
+          <h2 class="detailTitle">Not found</h2>
+          <div class="meta">Couldn’t find a criterion with id: <code>${id}</code></div>
+        </div>`;
+      } else {
+        const { pillar, group, item } = found;
 
-      function renderWeightingTable(rows) {
-        if (!rows) return "<p class='sectionHint'>Placeholder weighting table.</p>";
-        return `
-          <div class="tableWrap">
-            <table class="dataTable">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Factor A</th>
-                  <th>Factor B</th>
-                  <th>Factor C</th>
-                  <th>Factor D</th>
-                  <th>Factor E</th>
-                  <th>Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${rows.map(r => `
-                  <tr>
-                    ${r.map(cell => `<td>${cell}</td>`).join("")}
-                  </tr>
-                `).join("")}
-              </tbody>
-            </table>
+        document.title = `${item.title} – BZE CSC`;
+
+        content.innerHTML = `
+          <div class="detailCard">
+            <div class="note">${pillar.pillarTitle} • ${group.groupTitle}</div>
+            <h2 class="detailTitle">${item.title}</h2>
+
+            <div class="meta" style="margin-top:10px;">
+              <div><strong>URL id:</strong> <code>${item.id}</code></div>
+            </div>
+
+            <hr class="sectionDivider" />
+
+            <section class="section">
+              <h3 class="sectionTitle">Purpose of the Assessment</h3>
+              <p class="sectionText">
+                Placeholder: Describe why this criterion is being assessed, what decision it supports,
+                and who the primary users of the result are (e.g., project team, partners, funders, community).
+              </p>
+              <p class="sectionText">
+                Placeholder: Define the assessment scope (geography, timeframe, project lifecycle stage)
+                and any exclusions/assumptions.
+              </p>
+            </section>
+
+            <section class="section">
+              <h3 class="sectionTitle">Assessment Framework</h3>
+              <p class="sectionText">
+                Placeholder: Explain the framework used to assess this criterion (e.g., maturity model,
+                readiness scale, risk-based approach). Define the key dimensions you will evaluate.
+              </p>
+              <p class="sectionText">
+                Placeholder: Describe how this criterion aligns with the broader Critical Success Criteria
+                and how it should be interpreted alongside other criteria.
+              </p>
+            </section>
+
+            <section class="section">
+              <h3 class="sectionTitle">Data Sources</h3>
+              <ul class="bulletList">
+                <li>Placeholder: Data source #1 (e.g., government dataset, network operator plans, ABS, BOM, etc.)</li>
+                <li>Placeholder: Data source #2 (e.g., industry reports, feasibility studies, project documentation)</li>
+                <li>Placeholder: Data source #3 (e.g., stakeholder interviews, workshops, community consultation)</li>
+                <li>Placeholder: Data source #4 (e.g., GIS layers, site surveys, internal modelling outputs)</li>
+              </ul>
+            </section>
+
+            <section class="section">
+              <h3 class="sectionTitle">Scoring Process</h3>
+              <ol class="numberedList">
+                <li>Placeholder: Define the unit of analysis and confirm boundary conditions.</li>
+                <li>Placeholder: Collect and validate required inputs from the listed data sources.</li>
+                <li>Placeholder: Apply the assessment framework to translate inputs into sub-scores.</li>
+                <li>Placeholder: Review sub-scores with relevant stakeholders / internal QA.</li>
+                <li>Placeholder: Finalise the overall score and document rationale + evidence.</li>
+              </ol>
+            </section>
+
+            <section class="section">
+              <h3 class="sectionTitle">Weighting Table</h3>
+              <div class="tableWrap">
+                <table class="dataTable" aria-label="Weighting table">
+                  <thead>
+                    <tr>
+                      <th>Category</th>
+                      <th>Factor A</th>
+                      <th>Factor B</th>
+                      <th>Factor C</th>
+                      <th>Factor D</th>
+                      <th>Factor E</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Row 1</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Placeholder</td></tr>
+                    <tr><td>Row 2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Placeholder</td></tr>
+                    <tr><td>Row 3</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Placeholder</td></tr>
+                    <tr><td>Row 4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Placeholder</td></tr>
+                    <tr><td>Row 5</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Placeholder</td></tr>
+                    <tr><td>Row 6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Placeholder</td></tr>
+                    <tr><td>Row 7</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>Placeholder</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="sectionHint">
+                Placeholder: Explain what each factor represents and how weights should sum (if applicable).
+              </p>
+            </section>
+
+            <section class="section">
+              <h3 class="sectionTitle">Scoring Description</h3>
+              <div class="tableWrap">
+                <table class="dataTable" aria-label="Scoring description table">
+                  <thead>
+                    <tr>
+                      <th>Score</th>
+                      <th>Description</th>
+                      <th>Evidence / Examples</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>0</td><td>Placeholder: Definition of score 0.</td><td>Placeholder: What evidence would justify 0.</td></tr>
+                    <tr><td>1</td><td>Placeholder: Definition of score 1.</td><td>Placeholder: What evidence would justify 1.</td></tr>
+                    <tr><td>2</td><td>Placeholder: Definition of score 2.</td><td>Placeholder: What evidence would justify 2.</td></tr>
+                    <tr><td>3</td><td>Placeholder: Definition of score 3.</td><td>Placeholder: What evidence would justify 3.</td></tr>
+                    <tr><td>4</td><td>Placeholder: Definition of score 4.</td><td>Placeholder: What evidence would justify 4.</td></tr>
+                    <tr><td>5</td><td>Placeholder: Definition of score 5.</td><td>Placeholder: What evidence would justify 5.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="sectionHint">
+                Placeholder: Add any notes about minimum evidence standards, data quality thresholds,
+                or review/approval requirements.
+              </p>
+            </section>
           </div>
         `;
       }
-
-      function renderScoringTable(rows) {
-        if (!rows) return "<p class='sectionHint'>Placeholder scoring description.</p>";
-        return `
-          <div class="tableWrap">
-            <table class="dataTable">
-              <thead>
-                <tr>
-                  <th>Score</th>
-                  <th>Description</th>
-                  <th>Evidence / Examples</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${rows.map(r => `
-                  <tr>
-                    ${r.map(cell => `<td>${cell}</td>`).join("")}
-                  </tr>
-                `).join("")}
-              </tbody>
-            </table>
-          </div>
-        `;
-      }
-
-      contentEl.innerHTML = `
-        <div class="detailCard">
-          <div class="note">${pillar.pillarTitle} • ${group.groupTitle}</div>
-          <h2 class="detailTitle">${item.title}</h2>
-
-          <section class="section">
-            <h3 class="sectionTitle">Purpose of the Assessment</h3>
-            <p>${c.purpose || "Placeholder purpose content."}</p>
-          </section>
-
-          <section class="section">
-            <h3 class="sectionTitle">Assessment Framework</h3>
-            <p>${c.framework || "Placeholder framework content."}</p>
-          </section>
-
-          <section class="section">
-            <h3 class="sectionTitle">Data Sources</h3>
-            ${renderList(c.dataSources)}
-          </section>
-
-          <section class="section">
-            <h3 class="sectionTitle">Scoring Process</h3>
-            ${renderList(c.scoringProcess, "ol")}
-          </section>
-
-          <section class="section">
-            <h3 class="sectionTitle">Weighting Table</h3>
-            ${renderWeightingTable(c.weightingTable)}
-          </section>
-
-          <section class="section">
-            <h3 class="sectionTitle">Scoring Description</h3>
-            ${renderScoringTable(c.scoringDescription)}
-          </section>
-        </div>
-      `;
     }
-  }
-</script>
+  </script>
+</body>
+</html>
