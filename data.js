@@ -8,7 +8,52 @@ const CSC = [
         groupId: "energy-system",
         groupTitle: "Energy System",
         items: [
-          { id: "renewable-energy-generation", title: "Renewable energy generation" },
+          {
+  id: "renewable-energy-generation",
+  title: "Renewable energy generation",
+  content: {
+    purpose: `
+      Placeholder: This assessment evaluates the readiness, scale, and feasibility
+      of renewable energy generation within the selected region.
+      It supports strategic infrastructure planning and investment decisions.
+    `,
+    framework: `
+      Placeholder: The assessment framework considers capacity potential,
+      grid integration readiness, policy alignment, and environmental constraints.
+      Each dimension is scored independently and aggregated.
+    `,
+    dataSources: [
+      "Placeholder: AEMO ISP data",
+      "Placeholder: State renewable energy zones",
+      "Placeholder: Project pipeline databases",
+      "Placeholder: Local planning instruments"
+    ],
+    scoringProcess: [
+      "Define system boundary and timeframe.",
+      "Collect and validate energy generation capacity data.",
+      "Assess constraints and integration risks.",
+      "Assign sub-scores across framework dimensions.",
+      "Aggregate weighted score and document rationale."
+    ],
+    weightingTable: [
+      ["Generation potential", "20%", "—", "—", "—", "—", "Core capacity"],
+      ["Grid readiness", "20%", "—", "—", "—", "—", "Transmission alignment"],
+      ["Planning status", "15%", "—", "—", "—", "—", "Approvals progress"],
+      ["Environmental risk", "15%", "—", "—", "—", "—", "Impact assessment"],
+      ["Community support", "10%", "—", "—", "—", "—", "Consultation outcomes"],
+      ["Financing maturity", "10%", "—", "—", "—", "—", "Capital secured"],
+      ["Workforce readiness", "10%", "—", "—", "—", "—", "Skills availability"]
+    ],
+    scoringDescription: [
+      ["0", "No evidence of development", "No projects identified"],
+      ["1", "Early concept stage", "Feasibility under consideration"],
+      ["2", "Planning stage", "Preliminary approvals lodged"],
+      ["3", "Approved projects", "Development approvals granted"],
+      ["4", "Construction underway", "Financial close achieved"],
+      ["5", "Operational and scalable", "Multiple operational assets"]
+    ]
+  }
+}
           { id: "transmission-network", title: "Transmission network" },
           { id: "distribution-network", title: "Distribution network" },
           { id: "energy-storage", title: "Energy storage" },
