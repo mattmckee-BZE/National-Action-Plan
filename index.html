@@ -3,64 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BZE – Critical Success Criteria</title>
+  <title>National Action Plan – Map</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
     <div class="topbar">
-      <h1>BZE – Critical Success Criteria</h1>
-      <div class="note">Click any criterion to open its page</div>
+      <h1>National Action Plan</h1>
+      <div class="note">Click a city to view Critical Success Criteria</div>
     </div>
 
-    <div id="grid" class="grid"></div>
+    <div class="mapWrap" aria-label="Map of Australia with clickable cities">
+      <img class="mapImg" src="map.jpg" alt="Map of Australia" />
+
+      <!-- Clickable city labels (positions are percentages, tweak as needed) -->
+      <a class="cityLabel" style="left: 16%; top: 34%;" href="city.html?city=karratha">Karratha</a>
+      <a class="cityLabel" style="left: 23%; top: 34%;" href="city.html?city=port-hedland">Port Hedland</a>
+      <a class="cityLabel" style="left: 49%; top: 16%;" href="city.html?city=darwin">Darwin</a>
+
+      <a class="cityLabel" style="left: 18%; top: 58%;" href="city.html?city=geraldton">Geraldton</a>
+      <a class="cityLabel" style="left: 22%; top: 73%;" href="city.html?city=kwinana">Kwinana</a>
+      <a class="cityLabel" style="left: 28%; top: 80%;" href="city.html?city=collie">Collie</a>
+
+      <a class="cityLabel" style="left: 49%; top: 72%;" href="city.html?city=whyalla">Whyalla</a>
+
+      <a class="cityLabel" style="left: 64%; top: 36%;" href="city.html?city=mt-isa">Mt Isa</a>
+      <a class="cityLabel" style="left: 78%; top: 30%;" href="city.html?city=townsville">Townsville</a>
+      <a class="cityLabel" style="left: 84%; top: 45%;" href="city.html?city=gladstone">Gladstone</a>
+
+      <a class="cityLabel" style="left: 78%; top: 60%;" href="city.html?city=hunter-valley">Hunter Valley</a>
+      <a class="cityLabel" style="left: 83%; top: 73%;" href="city.html?city=port-kembla">Port Kembla</a>
+
+      <a class="cityLabel" style="left: 70%; top: 80%;" href="city.html?city=geelong">Geelong</a>
+      <a class="cityLabel" style="left: 78%; top: 82%;" href="city.html?city=latrobe-valley">Latrobe Valley</a>
+      <a class="cityLabel" style="left: 73%; top: 92%;" href="city.html?city=portland">Portland</a>
+      <a class="cityLabel" style="left: 86%; top: 89%;" href="city.html?city=bell-bay">Bell Bay</a>
+    </div>
+
+    <div class="note" style="margin-top:12px;">
+      If any label is slightly off, adjust its <code>left</code>/<code>top</code> percentages in <code>index.html</code>.
+    </div>
   </div>
-
-  <script src="data.js"></script>
-  <script>
-    const grid = document.getElementById("grid");
-
-    function render() {
-      grid.innerHTML = "";
-
-      for (const pillar of CSC) {
-        const pillarEl = document.createElement("section");
-        pillarEl.className = "pillar";
-
-        const pillarTitle = document.createElement("div");
-        pillarTitle.className = "pillarTitle";
-        pillarTitle.textContent = pillar.pillarTitle;
-        pillarEl.appendChild(pillarTitle);
-
-        for (const group of pillar.groups) {
-          const groupEl = document.createElement("div");
-          groupEl.className = "group";
-
-          const groupTitle = document.createElement("div");
-          groupTitle.className = "groupTitle";
-          groupTitle.textContent = group.groupTitle;
-          groupEl.appendChild(groupTitle);
-
-          const itemsEl = document.createElement("div");
-          itemsEl.className = "items";
-
-          for (const item of group.items) {
-            const a = document.createElement("a");
-            a.className = "itemLink";
-            a.href = `criterion.html?id=${encodeURIComponent(item.id)}`;
-            a.textContent = item.title;
-            itemsEl.appendChild(a);
-          }
-
-          groupEl.appendChild(itemsEl);
-          pillarEl.appendChild(groupEl);
-        }
-
-        grid.appendChild(pillarEl);
-      }
-    }
-
-    render();
-  </script>
 </body>
 </html>
