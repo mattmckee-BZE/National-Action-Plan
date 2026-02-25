@@ -147,7 +147,7 @@ const CSC = [
         groupId: "community-benefits-impacts",
         groupTitle: "Community Benefits & Impacts",
         items: [
-          { id: "strategic-nature-positive-planning", title: "Strategic and nature-positive land-use planning" },
+          { id: "strategic-nature-positive-planning", title: "Strategic & nature-positive land-use planning" },
           { id: "first-nations-benefit-sharing", title: "First Nations community benefit sharing" },
           { id: "wider-community-benefit-sharing", title: "Wider community benefit sharing" },
         ],
