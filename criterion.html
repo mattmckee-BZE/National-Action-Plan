@@ -1,1 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Criterion – BZE CSC</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumbs">
+      <a href="index.html">← Back to all criteria</a>
+    </div>
 
+    <div id="content"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+
+    const content = document.getElementById("content");
+
+    if (!id) {
+      content.innerHTML = `<div class="detailCard">
+        <h2 class="detailTitle">No criterion selected</h2>
+        <div class="meta">Go back and click a criterion.</div>
+      </div>`;
+    } else {
+      const found = findItemById(id);
+
+      if (!found) {
+        content.innerHTML = `<div class="detailCard">
+          <h2 class="detailTitle">Not found</h2>
+          <div class="meta">Couldn’t find a criterion with id: <code>${id}</code></div>
+        </div>`;
+      } else {
+        const { pillar, group, item } = found;
+
+        document.title = `${item.title} – BZE CSC`;
+
+        content.innerHTML = `
+          <div class="detailCard">
+            <div class="note">${pillar.pillarTitle} • ${group.groupTitle}</div>
+            <h2 class="detailTitle">${item.title}</h2>
+
+            <div class="meta">
+              <div><strong>URL id:</strong> <code>${item.id}</code></div>
+            </div>
+
+            <div class="placeholder">
+              <strong>Content goes here.</strong><br/>
+              Add description, evidence, indicators, owners, links to documents, etc.
+            </div>
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
