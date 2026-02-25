@@ -8,7 +8,7 @@ const CSC = [
         groupId: "energy-system",
         groupTitle: "Energy System",
         items: [
-          {id: "renewable-energy-generation", title: "Renewable energy generation",}
+          { id: "renewable-energy-generation", title: "Renewable energy generation" },
           { id: "transmission-network", title: "Transmission network" },
           { id: "distribution-network", title: "Distribution network" },
           { id: "energy-storage", title: "Energy storage" },
@@ -147,17 +147,20 @@ const CSC = [
         groupId: "community-benefits-impacts",
         groupTitle: "Community Benefits & Impacts",
         items: [
-          { id: "strategic-nature-positive-planning", title: "Strategic & nature-positive land-use planning" },
+          { id: "strategic-nature-positive-planning", title: "Strategic and nature-positive land-use planning" },
           { id: "first-nations-benefit-sharing", title: "First Nations community benefit sharing" },
           { id: "wider-community-benefit-sharing", title: "Wider community benefit sharing" },
+          { id: "demographic-planning", title: "Demographic planning" },
         ],
       },
       {
         groupId: "engagement-participation",
         groupTitle: "Engagement & Participation of Communities",
         items: [
+          { id: "knowledge-sharing-forums", title: "Knowledge sharing and co-design forums" },
           { id: "effective-first-nations-engagement", title: "Effective First Nations engagement" },
           { id: "effective-community-engagement", title: "Effective community engagement" },
+          { id: "public-awareness-education", title: "Public awareness and education" },
         ],
       },
     ],
