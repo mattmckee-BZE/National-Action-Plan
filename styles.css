@@ -183,3 +183,83 @@ h1 {
   border-color: #b8d0e2;
   box-shadow: 0 10px 26px rgba(0,0,0,0.16);
 }
+
+/* --- Criterion page sections + tables --- */
+.sectionDivider{
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 16px 0;
+}
+
+.section{
+  margin-top: 16px;
+}
+
+.sectionTitle{
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.sectionText{
+  margin: 0 0 10px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.sectionHint{
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.bulletList{
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.numberedList{
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.tableWrap{
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.dataTable{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px; /* keeps 7-col table readable on small screens */
+}
+
+.dataTable th,
+.dataTable td{
+  border-bottom: 1px solid var(--border);
+  padding: 10px 10px;
+  text-align: left;
+  font-size: 13px;
+  vertical-align: top;
+}
+
+.dataTable thead th{
+  position: sticky;
+  top: 0;
+  background: #f6fbff;
+  font-weight: 700;
+}
+
+.dataTable tbody tr:last-child td{
+  border-bottom: none;
+}
+
+.dataTable code{
+  font-size: 12px;
+}
