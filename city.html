@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>City – Critical Success Criteria</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div>
+        <div class="breadcrumbs">
+          <a href="index.html">← Back to map</a>
+        </div>
+        <h1 id="cityTitle" style="margin-top:8px;">City</h1>
+      </div>
+      <div class="note">Critical Success Criteria</div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    // --- City title handling ---
+    const CITY_LABELS = {
+      "karratha": "Karratha",
+      "port-hedland": "Port Hedland",
+      "darwin": "Darwin",
+      "geraldton": "Geraldton",
+      "kwinana": "Kwinana",
+      "collie": "Collie",
+      "whyalla": "Whyalla",
+      "mt-isa": "Mt Isa",
+      "townsville": "Townsville",
+      "gladstone": "Gladstone",
+      "hunter-valley": "Hunter Valley",
+      "port-kembla": "Port Kembla",
+      "geelong": "Geelong",
+      "latrobe-valley": "Latrobe Valley",
+      "portland": "Portland",
+      "bell-bay": "Bell Bay",
+    };
+
+    const params = new URLSearchParams(location.search);
+    const cityKey = params.get("city") || "";
+    const cityName = CITY_LABELS[cityKey] || "Selected City";
+
+    document.getElementById("cityTitle").textContent = cityName;
+    document.title = `${cityName} – Critical Success Criteria`;
+
+    // --- Render the CSC grid (this is your previous index page content) ---
+    const grid = document.getElementById("grid");
+
+    function renderCSC() {
+      grid.innerHTML = "";
+
+      for (const pillar of CSC) {
+        const pillarEl = document.createElement("section");
+        pillarEl.className = "pillar";
+
+        const pillarTitle = document.createElement("div");
+        pillarTitle.className = "pillarTitle";
+        pillarTitle.textContent = pillar.pillarTitle;
+        pillarEl.appendChild(pillarTitle);
+
+        for (const group of pillar.groups) {
+          const groupEl = document.createElement("div");
+          groupEl.className = "group";
+
+          const groupTitle = document.createElement("div");
+          groupTitle.className = "groupTitle";
+          groupTitle.textContent = group.groupTitle;
+          groupEl.appendChild(groupTitle);
+
+          const itemsEl = document.createElement("div");
+          itemsEl.className = "items";
+
+          for (const item of group.items) {
+            const a = document.createElement("a");
+            a.className = "itemLink";
+            a.href = `criterion.html?id=${encodeURIComponent(item.id)}&city=${encodeURIComponent(cityKey)}`;
+            a.textContent = item.title;
+            itemsEl.appendChild(a);
+          }
+
+          groupEl.appendChild(itemsEl);
+          pillarEl.appendChild(groupEl);
+        }
+
+        grid.appendChild(pillarEl);
+      }
+    }
+
+    renderCSC();
+  </script>
+</body>
+</html>
