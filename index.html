@@ -1,1 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BZE – Critical Success Criteria</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <h1>BZE – Critical Success Criteria</h1>
+      <div class="note">Click any criterion to open its page</div>
+    </div>
 
+    <div id="grid" class="grid"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    const grid = document.getElementById("grid");
+
+    function render() {
+      grid.innerHTML = "";
+
+      for (const pillar of CSC) {
+        const pillarEl = document.createElement("section");
+        pillarEl.className = "pillar";
+
+        const pillarTitle = document.createElement("div");
+        pillarTitle.className = "pillarTitle";
+        pillarTitle.textContent = pillar.pillarTitle;
+        pillarEl.appendChild(pillarTitle);
+
+        for (const group of pillar.groups) {
+          const groupEl = document.createElement("div");
+          groupEl.className = "group";
+
+          const groupTitle = document.createElement("div");
+          groupTitle.className = "groupTitle";
+          groupTitle.textContent = group.groupTitle;
+          groupEl.appendChild(groupTitle);
+
+          const itemsEl = document.createElement("div");
+          itemsEl.className = "items";
+
+          for (const item of group.items) {
+            const a = document.createElement("a");
+            a.className = "itemLink";
+            a.href = `criterion.html?id=${encodeURIComponent(item.id)}`;
+            a.textContent = item.title;
+            itemsEl.appendChild(a);
+          }
+
+          groupEl.appendChild(itemsEl);
+          pillarEl.appendChild(groupEl);
+        }
+
+        grid.appendChild(pillarEl);
+      }
+    }
+
+    render();
+  </script>
+</body>
+</html>
