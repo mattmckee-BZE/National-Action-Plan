@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Previous assessments</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumbs" style="margin-bottom:10px;">
+      <a id="backLink" href="criterion.html">← Back to indicator</a>
+    </div>
+
+    <div id="content"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    const city = params.get("city") || "";
+
+    const found = id ? findItemById(id) : null;
+
+    const backLink = document.getElementById("backLink");
+    backLink.href = `criterion.html?id=${encodeURIComponent(id || "")}${city ? `&city=${encodeURIComponent(city)}` : ""}`;
+
+    function prettyCity(s) {
+      if (!s) return "this city";
+      return s.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+    }
+
+    const cityName = prettyCity(city);
+    const indicatorName = found?.item?.title || "this indicator";
+
+    const content = document.getElementById("content");
+    content.innerHTML = `
+      <div class="detailCard">
+        <div class="note">Previous assessments</div>
+        <h2 class="detailTitle">${indicatorName}</h2>
+        <div class="placeholder" style="margin-top:14px;">
+          There are no previous assessments for this indicator in <strong>${cityName}</strong>.
+        </div>
+      </div>
+    `;
+  </script>
+</body>
+</html>
