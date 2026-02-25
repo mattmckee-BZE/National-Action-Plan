@@ -1,1 +1,145 @@
+/* styles.css */
+:root{
+  --bg: #eef6fb;
+  --card: #ffffff;
+  --border: #cfdce6;
+  --header: #1f6fa7;
+  --text: #0f2a3a;
+  --muted: #5a7486;
+}
 
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 18px 48px;
+}
+
+.topbar {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 900px) {
+  .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+.pillar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 240px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.pillarTitle {
+  font-weight: 700;
+  padding: 12px 12px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.group {
+  margin: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.groupTitle {
+  background: var(--header);
+  color: white;
+  font-weight: 700;
+  padding: 10px 10px;
+  font-size: 13px;
+}
+
+.items {
+  padding: 8px 10px 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.itemLink {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  background: #f7fbff;
+  border: 1px solid #d8e6f1;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.2;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.itemLink:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.breadcrumbs a {
+  color: var(--header);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.detailCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  margin-top: 14px;
+}
+
+.detailTitle {
+  font-size: 22px;
+  margin: 6px 0 0;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.placeholder {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+  background: #fbfdff;
+  color: var(--muted);
+}
