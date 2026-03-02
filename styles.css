@@ -1,4 +1,4 @@
-/* styles.css */
+r/* styles.css */
 :root{
   --bg: #eef6fb;
   --card: #ffffff;
@@ -344,13 +344,13 @@ h1 {
 /* --- Home page layout --- */
 .homeHeader{
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   margin-bottom: 18px;
 }
 
 .bzeLogo{
-  height: 56px;      /* adjust as needed */
+  height: 150px;      /* adjust as needed */
   width: auto;
   display: block;
 }
