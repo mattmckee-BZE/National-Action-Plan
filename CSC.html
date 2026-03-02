@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>National Action Plan Criteria</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumbs" style="margin-bottom:10px;">
+      <a href="index.html">← Back to home</a>
+    </div>
+
+    <div class="topbar">
+      <h1>National Action Plan Criteria</h1>
+      <div class="note">Click any criterion to explore further</div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    const grid = document.getElementById("grid");
+
+    function renderCSC() {
+      grid.innerHTML = "";
+
+      for (const pillar of CSC) {
+        const pillarEl = document.createElement("section");
+        pillarEl.className = "pillar";
+
+        const pillarTitle = document.createElement("div");
+        pillarTitle.className = "pillarTitle";
+        pillarTitle.textContent = pillar.pillarTitle;
+        pillarEl.appendChild(pillarTitle);
+
+        for (const group of pillar.groups) {
+          const groupEl = document.createElement("div");
+          groupEl.className = "group";
+
+          const groupTitle = document.createElement("div");
+          groupTitle.className = "groupTitle";
+          groupTitle.textContent = group.groupTitle;
+          groupEl.appendChild(groupTitle);
+
+          const itemsEl = document.createElement("div");
+          itemsEl.className = "items";
+
+          for (const item of group.items) {
+            const a = document.createElement("a");
+            a.className = "itemLink";
+            a.href = `criterion.html?id=${encodeURIComponent(item.id)}`;
+            a.textContent = item.title;
+            itemsEl.appendChild(a);
+          }
+
+          groupEl.appendChild(itemsEl);
+          pillarEl.appendChild(groupEl);
+        }
+
+        grid.appendChild(pillarEl);
+      }
+    }
+
+    renderCSC();
+  </script>
+</body>
+</html>
