@@ -344,13 +344,13 @@ h1 {
 /* --- Home page layout --- */
 .homeHeader{
   display: flex;
-  justify-content: auto;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 18px;
+  margin-bottom: 30px;
 }
 
 .bzeLogo{
-  height: 100px;      /* adjust as needed */
+  height: 200px;      /* adjust as needed */
   width: auto;
   display: block;
 }
