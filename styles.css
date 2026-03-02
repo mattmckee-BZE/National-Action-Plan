@@ -396,3 +396,7 @@ h1 {
   color: var(--bg);
   font-size: 12px;
 }
+
+body {
+  background: #eef6fb !important;
+}
