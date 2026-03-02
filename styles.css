@@ -391,12 +391,6 @@ body {
   grid-template-columns: repeat(2, 1fr); /* mobile default */
 }
 
-/* Tablet */
-@media (min-width: 700px){
-  .contributorsCards{
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 /* Desktop */
 @media (min-width: 1000px){
