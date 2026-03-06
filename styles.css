@@ -439,3 +439,16 @@ body {
   color: var(--muted);
   padding: 0 10px;
 }
+
+.cellList{
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cellList li{
+  margin-bottom: 6px;
+}
+
+.cellList li:last-child{
+  margin-bottom: 0;
+}
