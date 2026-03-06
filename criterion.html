@@ -15,7 +15,7 @@
     <div id="content"></div>
   </div>
 
-  <script src="data.js"></script>
+<script src="data.js"></script>
 <script>
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
@@ -50,6 +50,11 @@
           ? `learn-wider-community-benefits-sharing.html?${qp}`
           : `learn.html?${qp}`;
 
+      const assessPage =
+        id === "wider-community-benefit-sharing"
+          ? `assess-wider-community-benefits-sharing.html?${qp}`
+          : `assess.html?${qp}`;
+
       content.innerHTML = `
         <div class="detailCard">
           <div class="note">${pillar.pillarTitle} • ${group.groupTitle}</div>
@@ -70,9 +75,9 @@
               <div class="actionDesc">Read the framework, data sources, scoring guidance and tables.</div>
             </a>
 
-            <a class="actionCard" href="assess.html?${qp}">
+            <a class="actionCard" href="${assessPage}">
               <div class="actionTitle">Do your own assessment</div>
-              <div class="actionDesc">Start a new assessment workflow for this city and indicator.</div>
+              <div class="actionDesc">Start a guided assessment workflow for this city and indicator.</div>
             </a>
           </div>
         </div>
