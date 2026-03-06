@@ -452,3 +452,27 @@ body {
 .cellList li:last-child{
   margin-bottom: 0;
 }
+
+/* ASSESSMENT FORM STYLES */
+.formLabel{
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.formInput,
+.formTextarea{
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+}
+
+.formTextarea{
+  resize: vertical;
+  line-height: 1.5;
+}
