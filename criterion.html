@@ -22,7 +22,7 @@
   const city = params.get("city") || "";
 
   const backLink = document.getElementById("backLink");
-  backLink.href = city ? `city.html?city=${encodeURIComponent(city)}` : "city.html";
+  backLink.href = city ? `city.html?city=${encodeURIComponent(city)}` : "CSC.html";
 
   const content = document.getElementById("content");
 
@@ -45,10 +45,7 @@
 
       const qp = `id=${encodeURIComponent(id)}${city ? `&city=${encodeURIComponent(city)}` : ""}`;
 
-      const learnPage =
-        id === "wider-community-benefit-sharing"
-          ? `learn-wider-community-benefits-sharing.html?${qp}`
-          : `learn.html?${qp}`;
+      const learnPage = `learn.html?${qp}`;
 
       const assessPage =
         id === "wider-community-benefit-sharing"
