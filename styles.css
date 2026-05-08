@@ -187,7 +187,10 @@ body {
 }
 
 .itemLink {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   text-decoration: none;
   color: var(--text);
   background: #f7fbff;
@@ -201,6 +204,31 @@ body {
 .itemLink:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+/* Score colour classes */
+.itemLink.score-1 { background: #7b0000; border-color: #5a0000; color: #fff; }
+.itemLink.score-2 { background: #c0392b; border-color: #96281b; color: #fff; }
+.itemLink.score-3 { background: #1a56a8; border-color: #13407e; color: #fff; }
+.itemLink.score-4 { background: #a8d5a2; border-color: #7ab872; color: #1a3a1a; }
+.itemLink.score-5 { background: #1e7e34; border-color: #155724; color: #fff; }
+
+/* Score badge (numeral shown inside scored boxes) */
+.scoreBadge {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.itemLink.score-4 .scoreBadge {
+  background: rgba(0, 0, 0, 0.12);
 }
 
 /* =========================================================

@@ -22,6 +22,7 @@
   </div>
 
   <script src="data.js"></script>
+  <script src="scores.js"></script>
   <script>
     // --- City title handling ---
     const CITY_LABELS = {
@@ -79,9 +80,24 @@
 
           for (const item of group.items) {
             const a = document.createElement("a");
-            a.className = "itemLink";
             a.href = `criterion.html?id=${encodeURIComponent(item.id)}&city=${encodeURIComponent(cityKey)}`;
-            a.textContent = item.title;
+
+            const cityScores = (typeof SCORES !== "undefined") ? (SCORES[cityKey] || {}) : {};
+            const score = cityScores[item.id];
+
+            a.className = "itemLink" + (score ? ` score-${score}` : "");
+
+            const label = document.createElement("span");
+            label.textContent = item.title;
+            a.appendChild(label);
+
+            if (score) {
+              const badge = document.createElement("span");
+              badge.className = "scoreBadge";
+              badge.textContent = score;
+              a.appendChild(badge);
+            }
+
             itemsEl.appendChild(a);
           }
 
