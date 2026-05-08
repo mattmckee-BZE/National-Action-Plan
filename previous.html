@@ -70,7 +70,9 @@
 
       const roundsHtml = rounds.map((round, i) => {
         const label = SCORE_LABELS[round.score] || "";
-        const paras = (round.paragraphs || []).map(p => `<p class="sectionText">${p}</p>`).join("");
+        const paras = (round.paragraphs || []).map(p =>
+          p.startsWith("<") ? p : `<p class="sectionText">${p}</p>`
+        ).join("");
         const isLatest = i === 0;
         return `
           <section class="section">
