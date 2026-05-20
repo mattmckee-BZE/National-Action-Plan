@@ -31,7 +31,21 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 20px 48px;
+  padding: 20px 20px 28px;
+}
+
+/* =========================================================
+   CSC PAGE TOPBAR
+   ========================================================= */
+
+.topbar {
+  margin-bottom: 14px;
+}
+
+.topbar h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 4px;
 }
 
 /* =========================================================
@@ -160,13 +174,13 @@ body {
 
 .pillarTitle {
   font-weight: 700;
-  padding: 12px 14px;
+  padding: 7px 12px;
   font-size: 15px;
   border-bottom: 1px solid var(--border);
 }
 
 .group {
-  margin: 14px;
+  margin: 8px;
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
@@ -176,14 +190,14 @@ body {
   background: var(--header);
   color: white;
   font-weight: 700;
-  padding: 10px 12px;
+  padding: 5px 10px;
   font-size: 13px;
 }
 
 .items {
-  padding: 10px 12px 12px;
+  padding: 4px 8px 6px;
   display: grid;
-  gap: 8px;
+  gap: 4px;
 }
 
 .itemLink {
@@ -195,7 +209,7 @@ body {
   color: var(--text);
   background: #f7fbff;
   border: 1px solid #d8e6f1;
-  padding: 9px 11px;
+  padding: 5px 9px;
   border-radius: 12px;
   font-size: 13px;
   transition: transform 120ms ease, box-shadow 120ms ease;
