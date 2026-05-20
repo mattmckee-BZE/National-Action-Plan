@@ -23,15 +23,13 @@ const CSC = [
           { id: "port", title: "Port" },
           { id: "rail", title: "Rail" },
           { id: "road", title: "Road" },
-          { id: "transport-networks", title: "Networks" },
         ],
       },
       {
         groupId: "water-waste",
         groupTitle: "Water System & Waste Management",
         items: [
-          { id: "water-supply", title: "Water supply" },
-          { id: "wastewater-management", title: "Wastewater" },
+          { id: "water-and-wastewater", title: "Water & Wastewater" },
           { id: "solid-waste-resource-recovery", title: "Solid waste" },
         ],
       },
